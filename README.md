@@ -9,20 +9,6 @@
 
 ---
 
-## 🗂️ 프로젝트 구조
-
-```
-vehicle-demand-forecasting/
-│
-├── vehicle_demand_forecasting.ipynb   # 메인 노트북
-├── README.md
-└── output/
-    ├── eda_sales.png                  # EDA 시각화 결과
-    └── lstm_results.png               # 모델 예측 결과 시각화
-```
-
----
-
 ## 🔧 Tech Stack
 
 | 분류 | 라이브러리 |
@@ -42,11 +28,9 @@ PyTorch, Pandas, Scikit-learn 등 필요 패키지를 설치하고, 재현성을
 
 ### Step 1. 데이터 수집 & 전처리
 
-**옵션 A (기본 — 바로 실행 가능)**: 현실적인 차량 판매 시뮬레이션 데이터 생성
+**현실적인 차량 판매 시뮬레이션 데이터 생성
 - 2018년 ~ 2023년 (72개월) 월별 판매 데이터
 - 트렌드 + 계절성 + 코로나 영향(2020) + 노이즈를 결합한 현실적인 데이터 구성
-
-**옵션 B**: Kaggle [Car Sales Report](https://www.kaggle.com/datasets/gauthamp10/car-sales-report) 실제 데이터 사용
 
 피처 엔지니어링:
 - 월(month), 분기(quarter)
@@ -112,31 +96,3 @@ RMSE 기준으로 최적 모델을 자동 선정합니다.
 
 ---
 
-## ▶️ 실행 방법
-
-1. **Google Colab에서 열기** (권장)
-   - 노트북 파일을 Colab에 업로드 후 **런타임 → 모두 실행** (`Ctrl+F9`)
-
-2. **로컬 환경 실행**
-   ```bash
-   pip install torch pandas numpy scikit-learn matplotlib seaborn scipy
-   jupyter notebook vehicle_demand_forecasting.ipynb
-   ```
-
-> ⚠️ **주의**: 셀은 반드시 위에서 아래로 순서대로 실행해야 합니다. `train_dl`, `model`, `scaler` 등의 변수가 이전 셀에서 정의되므로, 셀을 건너뛰면 `NameError`가 발생할 수 있습니다.
-
----
-
-## 💡 한계 및 개선 방향
-
-- 외부 변수 추가 필요 (경제지표, 금리, 신모델 출시 일정 등)
-- 차종별 세분화 모델로 확장 가능
-- CPLEX / Gurobi 도입 시 더 정교한 최적화 가능
-- Transformer 계열 모델(Informer, PatchTST 등)과의 성능 비교 실험
-
----
-
-## 📝 참고 데이터
-
-- 시뮬레이션 데이터: 트렌드 + 계절성 + 코로나 영향 + 노이즈로 생성
-- 실제 데이터: [Kaggle - Car Sales Report](https://www.kaggle.com/datasets/gauthamp10/car-sales-report)
